@@ -1,0 +1,50 @@
+@font-face {
+  font-family: 'RIDIBatang';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+.navbar-nav {
+  width: 100%;
+}
+
+.navbar-nav .nav-item:last-child {
+  margin-left: auto;
+  
+}
+nav .navbar {
+  font-family: 'RIDIBatang', sans-serif;
+  background-color: #fffbe6 !important;
+}
+
+/* 로고 컨테이너 스타일 */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+/* 로고 이미지 스타일 */
+.logo-img {
+  height: 3rem; /* 기본 높이 */
+  margin-right: 0.1rem; /* 이미지와 글씨 사이의 간격 줄임 */
+}
+
+/* 미디어 쿼리: 화면 크기에 따라 로고 크기 조절 */
+@media (max-width: 576px) {
+  .logo-img {
+    height: 2.5rem; /* 작은 화면에서 로고 크기 조절 */
+  }
+  .navbar-brand {
+    font-size: 1.75rem; /* 작은 화면에서 글씨 크기 조절 */
+  }
+}
+
+@media (min-width: 1200px) {
+  .logo-img {
+    height: 3.2rem; /* 큰 화면에서 로고 크기 조절 */
+  }
+  .navbar-brand {
+    font-size: 2rem; /* 큰 화면에서 글씨 크기 조절 */
+  }
+}

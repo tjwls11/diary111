@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'RIDIBatang';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.footer {
+  color: #333;
+  padding: 5px 0;
+  text-align: center;
+  background-color: #fffbe6;
+  padding-top: 60px;
+}
+
+.team-span {
+  color: rgb(113, 165, 136);
+}

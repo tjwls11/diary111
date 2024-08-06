@@ -1,0 +1,130 @@
+@font-face {
+  font-family: 'RIDIBatang';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.mainpage {
+  font-family: 'RIDIBatang', sans-serif;
+  background-color: #fffbe6;
+}
+
+.header-opacity {
+  opacity: 0.9;
+  padding: 20px;
+  text-align: center;
+}
+
+.header-content {
+  margin: 120px !important;
+}
+
+.title {
+  font-size: 2.5em;
+  color: white;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 1.2em;
+  color: white;
+}
+
+.content-box {
+  display: flex; /* 추가 부분 */
+  flex-direction: column; /* 추가 부분 */
+  align-items: center;
+  justify-content: center; /* 추가 부분 */
+  padding: 60px;
+  background-color: #fffef9;
+  color: #312c25;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 85%;
+  margin: 35px;
+  margin-top: 80px;
+  margin-left: auto; /* 추가 부분 */
+  margin-right: auto; /* 추가 부분 */
+}
+
+.section-title {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: rgb(113, 165, 136) !important;
+}
+
+.section-description {
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+.main-section {
+  padding: 20px;
+}
+
+.section-content {
+  margin-bottom: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.main-card {
+  background-color: #eaf1c7dc !important;
+  border: 1px solid #9692806b !important;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 15px;
+  margin-top: 80px;
+  flex-basis: 45%;
+  padding: 30px;
+  text-align: center;
+}
+
+.card-image img {
+  max-width: 100%;
+  border-radius: 20px;
+}
+
+.card-description {
+  color: #302720;
+  margin-top: 20px;
+}
+
+.card-title1 {
+  color: rgb(49, 98, 80);
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+
+/* 여기서부터 미디어 쿼리 추가 */
+@media (max-width: 859px) {
+  .card {
+    flex-basis: 80%;
+  }
+  .content-box {
+    width: 90%;
+  }
+}
+
+@media (min-width: 860px) and (max-width: 1300px) {
+  .card {
+    flex-basis: 45%;
+  }
+}
+
+@media (min-width: 1301px) {
+  .card {
+    flex-basis: 45%;
+  }
+
+  .section-content {
+    margin-left: 60px;
+    margin-right: 60px;
+  }
+}

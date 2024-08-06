@@ -1,0 +1,83 @@
+@font-face {
+  font-family: 'RIDIBatang';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.navbar {
+  font-family: 'RIDIBatang', sans-serif;
+}
+
+.card {
+  background-color: rgb(113, 165, 136);
+  padding: 20px;
+}
+
+.titleName {
+  color: rgb(246, 244, 242);
+}
+
+.titleName i,
+.addSpan {
+  color: #c3e3ca;
+}
+
+.form-control {
+  text-align: center;
+}
+
+.addContainer {
+  width: 50%;
+  margin-top: 100px !important;
+}
+
+.Addbtn {
+  color: rgb(21, 21, 21);
+  background-color: rgb(139, 199, 166);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.Addbtn:hover {
+  color: white;
+  background-color: rgb(87, 140, 111);
+}
+
+.add-form-label {
+  font-weight: bold;
+  color: rgb(42, 41, 40);
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+
+.wise {
+  text-align: center;
+  margin-top: 60px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.wiseSpan {
+  color: rgb(113, 165, 136);
+}
+
+@media (max-width: 768px) {
+  .addContainer {
+    width: 90%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1350px) {
+  .addContainer {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1350px) {
+  .addContainer {
+    width: 50%;
+  }
+}
