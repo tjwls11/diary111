@@ -20,37 +20,28 @@ import {
 } from 'date-fns'
 import { setMoodColor, fetchUserCalendar } from './api/api'
 
-const RenderSidebar = ({
-  isOpen,
-  selectedDate,
-  colors,
-  handleMoodChange,
-  closeSidebar,
-}) => {
-  if (!isOpen || !selectedDate) return null
+const RenderSidebar = ({ isOpen, selectedDate, colors, handleMoodChange, closeSidebar }) => {
+  if (!isOpen || !selectedDate) return null;
 
   return (
-    <div className="sidebar">
-      <h2>{format(selectedDate, 'yyyy-MM-dd')}</h2>
-      <div className="d-flex flex-wrap">
-        {colors.map((color, index) => (
-          <button
-            key={index}
-            className="btn m-1"
-            onClick={() => handleMoodChange(color)}
-            style={{ backgroundColor: color }}
-          />
-        ))}
+      <div className="sidebar">
+          <h2>{format(selectedDate, 'yyyy-MM-dd')}</h2>
+          <div className="d-flex flex-wrap">
+              {colors.map((color, index) => (
+                  <button
+                      key={index}
+                      className="btn m-1"
+                      onClick={() => handleMoodChange(color)}
+                      style={{ backgroundColor: color }}
+                  />
+              ))}
+          </div>
+          <button className="btn btn-outline-secondary mt-3" onClick={closeSidebar}>
+              Close
+          </button>
       </div>
-      <button
-        className="close-btn btn btn-outline-secondary mt-3"
-        onClick={closeSidebar}
-      >
-        Close
-      </button>
-    </div>
-  )
-}
+  );
+};
 
 function Calendar() {
   const colors = [

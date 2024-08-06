@@ -1,12 +1,13 @@
 @font-face {
-  font-family: 'RIDIBatang';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
+  font-family: "RIDIBatang";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff")
+    format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 body {
-  font-family: 'RIDIBatang', sans-serif;
+  font-family: "RIDIBatang", sans-serif;
   background-color: #fffbe6;
   color: #312c25;
 }
@@ -42,6 +43,10 @@ h1 .bi {
 
 .btn {
   background-color: rgb(113, 165, 136);
+}
+.btn-outline-secondary {
+  background-color: #fffbe6;
+  border: none;
 }
 
 .btn:hover {
@@ -139,5 +144,3 @@ form {
   color: #6c757d;
   line-height: 5; /* 행간 조정 */
 }
-
-

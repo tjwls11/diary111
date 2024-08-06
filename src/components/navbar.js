@@ -26,7 +26,7 @@ const Navbar = () => {
           <img
             src={`${process.env.PUBLIC_URL}/img/logo.png`}
             alt="writer"
-            className="logo-img"
+            className="logo-img" to="/introduce"
           />
           마음챙기기
         </Link>

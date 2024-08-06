@@ -53,7 +53,11 @@ const MyPage = () => {
     }
 
     try {
-      const response = await changePassword(currentPassword, newPassword, token);
+      const response = await changePassword(
+        currentPassword,
+        newPassword,
+        token
+      );
       if (response.isSuccess) {
         alert("비밀번호가 변경되었습니다.");
         setCurrentPassword("");
@@ -137,7 +141,7 @@ const MyPage = () => {
                   ? `http://43.203.23.195:3011${user.profilePicture}`
                   : `${process.env.PUBLIC_URL}/img/mypage.png`
               }
-              alt="Profile"    
+              alt="Profile"
             />
           </div>
           <table>
@@ -158,9 +162,9 @@ const MyPage = () => {
           </table>
 
           <div className="profile-picture-change">
-            <h3 onClick={toggleFileInput} style={{ cursor: 'pointer' }}>
+            <h5 onClick={toggleFileInput} style={{ cursor: "pointer" }}>
               프로필 사진 변경
-            </h3>
+            </h5>
             {showFileInput && (
               <>
                 <input
@@ -180,9 +184,9 @@ const MyPage = () => {
           </div>
 
           <div className="password-change">
-            <h3 onClick={togglePasswordChange} style={{ cursor: 'pointer'  }}>
+            <h5 onClick={togglePasswordChange} style={{ cursor: "pointer" }}>
               비밀번호 변경
-            </h3>
+            </h5>
             {showPasswordChange && (
               <>
                 <input

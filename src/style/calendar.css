@@ -1,16 +1,10 @@
-/* Sidebar styles */
 .sidebar {
   position: fixed;
+  top: 75%;
   right: 0;
-  top: 0;
-  width: 300px;
-  height: 100%;
-  background-color: white;
-  border-left: 1px solid #ddd;
+  width: 200px;
   padding: 20px;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* Make sure the sidebar is above other content */
-  overflow-y: auto;
+  background-color: #fbfff0;
 }
 
 .close-btn {
@@ -85,4 +79,33 @@
 
 .text-muted {
   color: #6c757d; /* 흐림 효과를 주는 색상 */
+}
+
+
+/* styles.css */
+.sticker-shop {
+  padding: 20px;
+}
+
+.sticker-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sticker-item {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 10px;
+  width: 200px;
+  text-align: center;
+}
+
+.sticker-item img {
+  max-width: 100%;
+  height: auto;
+}
+
+.sticker-item button {
+  margin-top: 10px;
 }

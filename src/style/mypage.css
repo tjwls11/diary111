@@ -102,7 +102,12 @@ h2.sec-wrap {
 .password-change {
   margin-top: 20px;
 }
-
+.profile-picture-change {
+  text-align: center;
+}
+.password-change {
+  text-align: center;
+}
 .input {
   width: calc(100% - 24px);
   padding: 12px;
@@ -120,7 +125,7 @@ h2.sec-wrap {
   margin: 10px 0;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 10px;
   color: #fff;
   background-color: rgb(113, 165, 136);
   cursor: pointer;
@@ -128,19 +133,5 @@ h2.sec-wrap {
 }
 
 .Change-button-mypage:hover {
-  background-color: #45a049;
-}
-
-.out {
-  display: block;
-  text-align: center;
-  font-size: 16px;
-  color: #007bff;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: color 0.3s ease;
-}
-
-.out:hover {
-  color: #0056b3;
+  background-color:rgb(113, 165, 136);
 }

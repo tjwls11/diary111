@@ -1,108 +1,86 @@
-import React, { useState, useEffect } from 'react'
-import { fetchStickers, fetchUserStickers, buySticker } from './api/api'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import React, { useState, useEffect } from 'react';
+import { fetchStickers, purchaseSticker, fetchUserStickers } from './api/api';
+import StickerItem from './StickerItem';
+import { useNavigate } from 'react-router-dom';
 
 const StickerShop = () => {
-  const [stickers, setStickers] = useState([])
-  const [userStickers, setUserStickers] = useState([])
-  const [error, setError] = useState(null)
-
-  const token = localStorage.getItem('token') // 로컬 저장소에서 토큰 가져오기
+  const [stickers, setStickers] = useState([]);
+  const [userStickers, setUserStickers] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const loadStickers = async () => {
+    const getStickers = async () => {
       try {
-        if (!token) {
-          throw new Error('토큰이 제공되지 않았습니다.')
-        }
-
-        const allStickers = await fetchStickers(token)
-        setStickers(allStickers || [])
-
-        const ownedStickers = await fetchUserStickers(token)
-        setUserStickers(ownedStickers || [])
-        localStorage.setItem(
-          'userStickers',
-          JSON.stringify(ownedStickers || [])
-        ) // 로컬 저장소에 저장
+        const data = await fetchStickers();
+        setStickers(data);
       } catch (error) {
-        console.error('스티커를 가져오는 중 오류가 발생했습니다.', error)
-        setError('스티커를 가져오는 중 오류가 발생했습니다.')
+        console.error('스티커 목록을 불러오는 중 오류가 발생했습니다.', error);
       }
-    }
+    };
 
-    loadStickers()
-  }, [token])
+    const getUserStickers = async () => {
+      try {
+        const token = localStorage.getItem('authToken');
+        if (!token) return;
+        
+        const userStickers = await fetchUserStickers(token);
+        setUserStickers(userStickers);
+      } catch (error) {
+        console.error('유저 스티커 목록을 불러오는 중 오류가 발생했습니다.', error);
+      }
+    };
 
-  const handleBuySticker = async (stickerId, price) => {
+    getStickers();
+    getUserStickers();
+  }, []);
+
+  const handlePurchase = async (sticker) => {
     try {
+      const token = localStorage.getItem('authToken');
       if (!token) {
-        alert('로그인이 필요합니다.')
-        return
+        alert('로그인 후 구매를 진행해주세요.');
+        navigate('/login');
+        return;
       }
 
-      const response = await buySticker(stickerId, price, token) // 매개변수 수정
-      if (response.status === 200) {
-        alert('스티커 구매 성공!')
-        // 구매 후 사용자 스티커 목록 업데이트
-        const updatedUserStickers = await fetchUserStickers(token)
-        setUserStickers(updatedUserStickers || [])
-        localStorage.setItem(
-          'userStickers',
-          JSON.stringify(updatedUserStickers || [])
-        ) // 로컬 저장소에 저장
+      const isStickerOwned = userStickers.some(item => item.sticker_id === sticker.sticker_id);
+      if (isStickerOwned) {
+        alert(`이미 소유한 스티커 '${sticker.name}'입니다.`);
+        return;
+      }
+
+      const purchaseResponse = await purchaseSticker(sticker.sticker_id, token);
+      if (purchaseResponse.isSuccess) {
+        alert(`스티커 '${sticker.name}' 구매 완료`);
+        setUserStickers(prev => [...prev, { sticker_id: sticker.sticker_id, name: sticker.name }]);
       } else {
-        alert('스티커 구매 실패: ' + response.data.message)
+        alert(`구매 실패: ${purchaseResponse.message}`);
       }
     } catch (error) {
-      console.error('스티커 구매 중 오류가 발생했습니다.', error)
-      alert('스티커 구매 중 오류 발생')
+      console.error('구매 오류:', error);
+      alert('구매 중 오류가 발생했습니다.');
     }
-  }
+  };
 
   return (
-    <div className="container mt-5">
-      <h1 className="text-center mb-4">스티커 샵</h1>
-      {error && <p className="text-danger text-center">{error}</p>}
-      <div className="row">
-        {stickers.map((sticker) => (
-          <div key={sticker.sticker_id} className="col-md-4 mb-4">
-            <div className="card">
-              <img
-                src={sticker.image_url}
-                alt={sticker.name}
-                className="card-img-top"
-              />
-              <div className="card-body">
-                <h5 className="card-title">{sticker.name}</h5>
-                <p className="card-text">가격: {sticker.price} 코인</p>
-                <button
-                  className="btn btn-primary"
-                  disabled={
-                    !token ||
-                    userStickers.some(
-                      (userSticker) =>
-                        userSticker.sticker_id === sticker.sticker_id
-                    )
-                  }
-                  onClick={() =>
-                    handleBuySticker(sticker.sticker_id, sticker.price)
-                  } // price 추가
-                >
-                  {userStickers.some(
-                    (userSticker) =>
-                      userSticker.sticker_id === sticker.sticker_id
-                  )
-                    ? '소유함'
-                    : '구매하기'}
-                </button>
-              </div>
+    <div>
+      <h1>스티커 샵</h1>
+      <div className="sticker-list">
+        {stickers.map(sticker => {
+          const isOwned = userStickers.some(userSticker => userSticker.sticker_id === sticker.sticker_id);
+
+          return (
+            <div key={sticker.sticker_id} className="sticker-item">
+              <StickerItem sticker={sticker} />
+              <button onClick={() => handlePurchase(sticker)} disabled={isOwned}>
+                {isOwned ? '소유한 스티커' : '구매하기'}
+              </button>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default StickerShop
+export default StickerShop;

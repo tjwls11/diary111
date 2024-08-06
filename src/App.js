@@ -18,7 +18,7 @@ const App = () => {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Introduce />} />
+          <Route path="/" element={<Introduce />} />                     
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/mypage" element={<MyPage />} />
@@ -34,3 +34,6 @@ const App = () => {
 }
 
 export default App
+
+
+
