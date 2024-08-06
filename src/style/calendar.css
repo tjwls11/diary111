@@ -1,111 +1,192 @@
+/* 전체 스타일 정의 */
+.container {
+  position: relative;
+}
+
 .sidebar {
   position: fixed;
-  top: 75%;
-  right: 0;
+  bottom: 10px;
+  left: 10px;
   width: 200px;
-  padding: 20px;
-  background-color: #fbfff0;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 
-.close-btn {
-  background-color: #86bb9c !important;
-  border-color: #3554461c !important;
-  color: #333 !important;
+/* 색상 선택기 컨테이너 */
+.color-picker-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
 }
 
-.close-btn:hover {
-  color: #c3e3ca !important;
-  background-color: #43745e !important;
-}
-
-.calendar-icon-btn {
-  color: #f7fffc !important;
-  background-color: #86bb9c !important;
-  border-color: #3554461c !important;
-}
-
-.calendar-icon-btn:hover {
-  color: #c3e3ca !important;
-  background-color: #43745e !important;
-  border-color: #43745ec4 !important;
-}
-
-.alert-btn-icon {
-  color: #f7fffc !important;
-  background-color: #86bb9c !important;
-  border-color: #3554461c !important;
-}
-
-.alert-btn-icon:hover {
-  color: #c3e3ca !important;
-  background-color: #43745e !important;
-}
-
-.sticker {
+/* 색상 선택 버튼 (완전 동그라미) */
+.color-picker-circle {
   width: 30px;
   height: 30px;
-  object-fit: cover;
-  display: block;
-  margin-top: 5px;
+  border-radius: 50%; /* 완전 동그라미 */
+  border: none; /* 선 없음 */
+  cursor: pointer;
+  transition: transform 0.2s;
 }
 
+/* 색상 선택 버튼 호버 효과 */
+.color-picker-circle:hover {
+  transform: scale(1.1); /* 호버 시 약간 확대 */
+}
+.color-picker-circle:focus {
+  outline: none;
+}
+
+
 .tooltip {
-  background-color: #333;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.75);
   color: #fff;
   padding: 5px;
   border-radius: 3px;
   font-size: 12px;
 }
 
-.col {
-  position: relative; /* 날짜 칸을 상대 위치로 설정하여 툴팁을 정확한 위치에 표시 */
-  cursor: pointer; /* 커서를 포인터로 변경 */
-  padding: 15px; /* 클릭 가능한 영역을 확장 */
+.btn-outline-secondary {
+  border: 1px solid #ccc;
+  color: #333;
+  background-color: transparent;
 }
 
-.tooltip {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #333;
-  color: #fff;
-  padding: 5px;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  white-space: nowrap; /* 텍스트가 줄 바꿈되지 않도록 설정 */
-  z-index: 10; /* 툴팁이 다른 요소들 위에 위치하도록 설정 */
+.btn-outline-secondary:hover {
+  color: #000;
+  background-color: #e9ecef;
 }
 
-.text-muted {
-  color: #6c757d; /* 흐림 효과를 주는 색상 */
+.calendar-icon-btn {
+  font-size: 18px;
+  padding: 0;
 }
 
-
-/* styles.css */
-.sticker-shop {
-  padding: 20px;
-}
-
-.sticker-list {
+.yearly-view {
   display: flex;
   flex-wrap: wrap;
 }
 
-.sticker-item {
+.monthly-view {
+  width: 14.285%;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+/* 캘린더 컨테이너를 정사각형으로 설정 */
+.calendar {
+  width: 100%;
+  max-width: 800px; /* 원하는 최대 너비 설정 */
+  height: 800px; /* 너비와 동일한 높이 설정 */
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 달력 헤더와 요일, 셀의 크기를 맞추기 위해 flex 레이아웃 사용 */
+.calendar-header {
+  flex: 0 0 auto;
+}
+
+.days,
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 요일 헤더 */
+.days {
+  display: flex;
+  flex: 0 0 10%; /* 요일 헤더의 높이 비율 설정 */
+  
+}
+
+/* 본문 내의 행 */
+.body {
+  flex: 1;
+}
+
+/* 본문 내의 행 */
+.body .row {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+/* 전체 캘린더 컨테이너를 정사각형으로 설정 */
+.calendar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 800px; /* 최대 너비 설정 (원하는 크기로 조정) */
+  height: 800px; /* 최대 높이 설정 (너비와 동일하게 조정) */
+  margin: 0 auto;
+}
+
+/* 캘린더 내부 스타일링 */
+.calendar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* 캘린더 헤더 (달, 연도 등) */
+.calendar-header {
+  flex: 0 0 50px; /* 헤더의 높이 조정 (필요에 따라 조정) */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #ddd;
+}
+
+/* 요일 제목 영역 */
+.days {
+  display: flex;
+  flex: 0 0 40px; /* 요일 제목의 높이 조정 (필요에 따라 조정) */
+  background-color: #e0e0e0;
+}
+
+/* 달력 셀을 정사각형으로 설정 */
+.body {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: calc(100% - 90px); /* 헤더와 요일 제목 영역을 제외한 높이 */
+}
+
+.body .cell {
+  width: calc(100% / 7); /* 7일 기준으로 각 셀의 너비 설정 */
+  height: calc(100% / 6); /* 6주 기준으로 각 셀의 높이 설정 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8em;
   border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 10px;
-  margin: 10px;
-  width: 200px;
-  text-align: center;
+  box-sizing: border-box;
+  background: #fff;
 }
 
-.sticker-item img {
-  max-width: 100%;
-  height: auto;
-}
-
-.sticker-item button {
-  margin-top: 10px;
+/* 요일 제목 셀 */
+.days .cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
 }

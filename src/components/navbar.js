@@ -11,36 +11,18 @@ const Navbar = () => {
     navigate('/');
   };
 
-  const handleLogoClick = (event) => {
-    if (user) {
-      event.preventDefault(); // 기본 링크 동작 방지
-    } else {
-      navigate('/'); // 로그인하지 않은 경우에만 홈 페이지로 이동
-    }
-  };
-
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
-        <Link className="navbar-brand fs-2 mx-1" to="/" onClick={handleLogoClick}>
+        <Link className="navbar-brand fs-2 mx-1" to="/">
           <img
             src={`${process.env.PUBLIC_URL}/img/logo.png`}
             alt="writer"
-            className="logo-img" to="/introduce"
+            className="logo-img" to="/"
           />
           마음챙기기
         </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             {user ? (
